@@ -10,7 +10,8 @@
         android:layout_height="@dimen/tools_bar_height">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/tool_bar"
+            app:titleTextColor="@color/whitesmoke"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
