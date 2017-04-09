@@ -26,4 +26,9 @@
     </FrameLayout>
 
 
+    <TextView
+        android:id="@+id/tv_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lskdjf"/>
 </android.support.design.widget.CoordinatorLayout>

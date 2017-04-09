@@ -1,20 +1,23 @@
 package com.ronin.bosszhipin.fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ronin.bosszhipin.R
 import com.ronin.bosszhipin.base.BaseFragment
 import com.ronin.learn.adapter.MyAdapter
 import kotlinx.android.synthetic.main.fragment_job.view.*
-import kotlinx.android.synthetic.main.layout_recyclerview.*
 import kotlinx.android.synthetic.main.layout_recyclerview.view.*
 
 /**
  * Created by Administrator on 2017/4/1.
  */
-class JobFragment : BaseFragment() {
+class JobFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
+
 
     var rootView: View? = null
     val adapter = MyAdapter()
@@ -33,11 +36,21 @@ class JobFragment : BaseFragment() {
 
     private fun initView() {
         rootView!!.tool_bar.title = "android"
-        recyclerView
-        adapter.openLoadAnimation()
+
+        rootView!!.swipeLayout.setOnRefreshListener(this)
+//        adapter.openLoadAnimation()
+        adapter.openLoadAnimation(BaseQuickAdapter.SCALEIN)
         adapter.setNotDoAnimationCount(3)
+
         rootView!!.recyclerView.layoutManager = LinearLayoutManager(activity)
         rootView!!.recyclerView.adapter = adapter
+
+    }
+
+
+    override fun onRefresh() {
+
+        Handler().postDelayed({ rootView!!.swipeLayout.isRefreshing = false }, 2000)
 
     }
 
