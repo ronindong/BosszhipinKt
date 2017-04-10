@@ -18,23 +18,27 @@ import kotlinx.android.synthetic.main.layout_recyclerview.view.*
  */
 class JobFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
-
-    var rootView: View? = null
+    private var addCallBack: ((a: Int, b: Int) -> Int)? = null
     val adapter = MyAdapter()
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        rootView = inflater?.inflate(R.layout.fragment_job, container, false)
-
-        setHasOptionsMenu(true)
-        (activity as AppCompatActivity).setSupportActionBar(rootView!!.tool_bar)
+    override fun createView(inflater: LayoutInflater?,
+                            container: ViewGroup?, savedInstanceState: Bundle?) {
         initView()
 
-        return rootView
     }
 
+
+
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_job
+    }
+
+
+
+
     private fun initView() {
+        setHasOptionsMenu(true)
+        (activity as AppCompatActivity).setSupportActionBar(rootView!!.tool_bar)
         rootView!!.tool_bar.title = "android"
 
         rootView!!.swipeLayout.setOnRefreshListener(this)

@@ -6,6 +6,8 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
+    useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
         applicationId "com.ronin.bosszhipin"
         minSdkVersion 16
